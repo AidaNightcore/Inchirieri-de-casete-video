@@ -9,11 +9,12 @@ namespace Inchirieri_de_casete_video
         private string clientsFilePath;
         private string moviesFilePath;
         private string rentalsFilePath;
-        public DataHandler(string clientsFilePath, string moviesFilePath, string rentalsFilePath)
+
+        public DataHandler(string v_clientsFilePath, string v_moviesFilePath, string v_rentalsFilePath)
         {
-            this.clientsFilePath = clientsFilePath;
-            this.moviesFilePath = moviesFilePath;
-            this.rentalsFilePath = rentalsFilePath;
+            clientsFilePath = v_clientsFilePath;
+            moviesFilePath = v_moviesFilePath;
+            rentalsFilePath = v_rentalsFilePath;
         }
         public void SaveClients(List<Client> clients)
         {
@@ -23,6 +24,10 @@ namespace Inchirieri_de_casete_video
         public void SaveMovies(List<Movie> movies)
         {
             SaveData(movies, moviesFilePath);
+        }
+        public void SaveRentals(List<Rental> rentals)
+        {
+            SaveData(rentals, rentalsFilePath);
         }
 
         private void SaveData<T>(List<T> data, string filePath)
@@ -43,6 +48,7 @@ namespace Inchirieri_de_casete_video
                 Console.WriteLine($"Error saving data: {ex.Message}");
             }
         }
+
         public List<Client> RestoreClients()
         {
             return RestoreData<Client>(clientsFilePath);
@@ -52,6 +58,7 @@ namespace Inchirieri_de_casete_video
         {
             return RestoreData<Movie>(moviesFilePath);
         }
+        
 
         private List<T> RestoreData<T>(string filePath)
         {
@@ -65,7 +72,7 @@ namespace Inchirieri_de_casete_video
                     string line;
                     while ((line = reader.ReadLine()) != null)
                     {
-                        // Assuming that each line represents one serialized object
+                        
                         T item = Deserialize<T>(line);
                         if (item != null)
                         {
@@ -86,7 +93,7 @@ namespace Inchirieri_de_casete_video
         {
             try
             {
-                // Convert the serialized data back to object
+                
                 return (T)Convert.ChangeType(fileData, typeof(T));
             }
             catch (Exception ex)
@@ -96,5 +103,7 @@ namespace Inchirieri_de_casete_video
             }
 
         }
+
+
     }
 }

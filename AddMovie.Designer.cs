@@ -89,6 +89,7 @@
             this.cancelBtn.TabIndex = 11;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // addMovieBtn
             // 
@@ -99,6 +100,7 @@
             this.addMovieBtn.TabIndex = 10;
             this.addMovieBtn.Text = "Add";
             this.addMovieBtn.UseVisualStyleBackColor = true;
+            this.addMovieBtn.Click += new System.EventHandler(this.addMovieBtn_Click);
             // 
             // movieNameTB
             // 

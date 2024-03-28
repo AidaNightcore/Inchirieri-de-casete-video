@@ -25,5 +25,15 @@ namespace Inchirieri_de_casete_video
         {
 
         }
+
+        private void cancelBtn_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void addMovieBtn_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

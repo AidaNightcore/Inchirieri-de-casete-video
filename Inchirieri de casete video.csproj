@@ -58,6 +58,12 @@
     <Compile Include="AddMovie.Designer.cs">
       <DependentUpon>AddMovie.cs</DependentUpon>
     </Compile>
+    <Compile Include="AddRental.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddRental.Designer.cs">
+      <DependentUpon>AddRental.cs</DependentUpon>
+    </Compile>
     <Compile Include="Client.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
@@ -75,6 +81,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AddMovie.resx">
       <DependentUpon>AddMovie.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AddRental.resx">
+      <DependentUpon>AddRental.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

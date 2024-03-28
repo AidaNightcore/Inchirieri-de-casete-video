@@ -53,9 +53,5 @@ namespace Inchirieri_de_casete_video
             copy.languages = langaugesNew;
             return copy;
         }
-
-
     }
-
-
 }

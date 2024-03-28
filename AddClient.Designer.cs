@@ -25,7 +25,7 @@ namespace Inchirieri_de_casete_video
             this.addClientBtn = new System.Windows.Forms.Button();
             this.cancelBtn = new System.Windows.Forms.Button();
             this.nameLabel = new System.Windows.Forms.Label();
-            this.birthdayDate = new System.Windows.Forms.DateTimePicker();
+            this.birthdayDatePicker = new System.Windows.Forms.DateTimePicker();
             this.birthdayLabel = new System.Windows.Forms.Label();
             this.adressLabel = new System.Windows.Forms.Label();
             this.phoneLabel = new System.Windows.Forms.Label();
@@ -34,6 +34,8 @@ namespace Inchirieri_de_casete_video
             this.phoneTB = new System.Windows.Forms.TextBox();
             this.barPanel = new System.Windows.Forms.Panel();
             this.windowTitleLabel = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.clientSurnameTB = new System.Windows.Forms.TextBox();
             this.barPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +48,7 @@ namespace Inchirieri_de_casete_video
             this.addClientBtn.TabIndex = 0;
             this.addClientBtn.Text = "Add";
             this.addClientBtn.UseVisualStyleBackColor = true;
+            this.addClientBtn.Click += new System.EventHandler(this.addClientBtn_Click);
             // 
             // cancelBtn
             // 
@@ -56,6 +59,7 @@ namespace Inchirieri_de_casete_video
             this.cancelBtn.TabIndex = 1;
             this.cancelBtn.Text = "Cancel";
             this.cancelBtn.UseVisualStyleBackColor = true;
+            this.cancelBtn.Click += new System.EventHandler(this.cancelBtn_Click);
             // 
             // nameLabel
             // 
@@ -68,17 +72,16 @@ namespace Inchirieri_de_casete_video
             this.nameLabel.TabIndex = 2;
             this.nameLabel.Text = "Client Name";
             // 
-            // birthdayDate
+            // birthdayDatePicker
             // 
-            this.birthdayDate.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birthdayDate.CustomFormat = "DD-MM-YYYY";
-            this.birthdayDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.birthdayDate.Location = new System.Drawing.Point(305, 178);
-            this.birthdayDate.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
-            this.birthdayDate.Name = "birthdayDate";
-            this.birthdayDate.Size = new System.Drawing.Size(193, 26);
-            this.birthdayDate.TabIndex = 3;
-            this.birthdayDate.Value = new System.DateTime(2024, 3, 28, 0, 0, 0, 0);
+            this.birthdayDatePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.birthdayDatePicker.CustomFormat = "DD-MM-YYYY";
+            this.birthdayDatePicker.Location = new System.Drawing.Point(305, 184);
+            this.birthdayDatePicker.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
+            this.birthdayDatePicker.Name = "birthdayDatePicker";
+            this.birthdayDatePicker.Size = new System.Drawing.Size(193, 20);
+            this.birthdayDatePicker.TabIndex = 3;
+            this.birthdayDatePicker.Value = new System.DateTime(2024, 3, 28, 0, 0, 0, 0);
             // 
             // birthdayLabel
             // 
@@ -118,7 +121,7 @@ namespace Inchirieri_de_casete_video
             this.clientNameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.clientNameTB.Location = new System.Drawing.Point(24, 99);
             this.clientNameTB.Name = "clientNameTB";
-            this.clientNameTB.Size = new System.Drawing.Size(247, 26);
+            this.clientNameTB.Size = new System.Drawing.Size(115, 26);
             this.clientNameTB.TabIndex = 7;
             // 
             // adressTB
@@ -146,7 +149,6 @@ namespace Inchirieri_de_casete_video
             this.barPanel.Name = "barPanel";
             this.barPanel.Size = new System.Drawing.Size(519, 41);
             this.barPanel.TabIndex = 10;
-            this.barPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.barPanel_Paint);
             // 
             // windowTitleLabel
             // 
@@ -158,6 +160,25 @@ namespace Inchirieri_de_casete_video
             this.windowTitleLabel.TabIndex = 0;
             this.windowTitleLabel.Text = "Add client";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.SystemColors.ControlLight;
+            this.label1.Location = new System.Drawing.Point(141, 76);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(118, 20);
+            this.label1.TabIndex = 11;
+            this.label1.Text = "Client Surname";
+            // 
+            // clientSurnameTB
+            // 
+            this.clientSurnameTB.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientSurnameTB.Location = new System.Drawing.Point(145, 99);
+            this.clientSurnameTB.Name = "clientSurnameTB";
+            this.clientSurnameTB.Size = new System.Drawing.Size(126, 26);
+            this.clientSurnameTB.TabIndex = 12;
+            // 
             // AddClient
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -165,6 +186,8 @@ namespace Inchirieri_de_casete_video
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(519, 305);
+            this.Controls.Add(this.clientSurnameTB);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.barPanel);
             this.Controls.Add(this.phoneTB);
             this.Controls.Add(this.adressTB);
@@ -172,7 +195,7 @@ namespace Inchirieri_de_casete_video
             this.Controls.Add(this.phoneLabel);
             this.Controls.Add(this.adressLabel);
             this.Controls.Add(this.birthdayLabel);
-            this.Controls.Add(this.birthdayDate);
+            this.Controls.Add(this.birthdayDatePicker);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.cancelBtn);
             this.Controls.Add(this.addClientBtn);
@@ -191,7 +214,7 @@ namespace Inchirieri_de_casete_video
         private Button addClientBtn;
         private Button cancelBtn;
         private Label nameLabel;
-        private DateTimePicker birthdayDate;
+        private DateTimePicker birthdayDatePicker;
         private Label birthdayLabel;
         private Label adressLabel;
         private Label phoneLabel;
@@ -200,5 +223,7 @@ namespace Inchirieri_de_casete_video
         private TextBox phoneTB;
         private Panel barPanel;
         private Label windowTitleLabel;
+        private Label label1;
+        private TextBox clientSurnameTB;
     }
 }
