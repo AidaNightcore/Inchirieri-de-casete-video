@@ -31,29 +31,7 @@ namespace Inchirieri_de_casete_video
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.itemsControlMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.itemsControlMenu.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // itemsControlMenu
-            // 
-            this.itemsControlMenu.AllowMerge = false;
-            this.itemsControlMenu.AutoClose = false;
-            this.itemsControlMenu.DropShadowEnabled = false;
-            this.itemsControlMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.addUserToolStripMenuItem});
-            this.itemsControlMenu.MaximumSize = new System.Drawing.Size(400, 40);
-            this.itemsControlMenu.MinimumSize = new System.Drawing.Size(200, 40);
-            this.itemsControlMenu.Name = "itemsControlMenu";
-            this.itemsControlMenu.Size = new System.Drawing.Size(200, 40);
-            // 
-            // addUserToolStripMenuItem
-            // 
-            this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
-            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
-            this.addUserToolStripMenuItem.Text = "Add User";
             // 
             // Main
             // 
@@ -72,14 +50,11 @@ namespace Inchirieri_de_casete_video
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rent Movie Cassetes";
-            this.itemsControlMenu.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
-        private System.Windows.Forms.ContextMenuStrip itemsControlMenu;
-        private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenuItem;
 
         
 

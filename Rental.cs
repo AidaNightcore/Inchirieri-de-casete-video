@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace Inchirieri_de_casete_video
 {
-    internal class Rented{
-
+    public class Rental{
+        private string id;
 
     }
 }

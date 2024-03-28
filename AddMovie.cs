@@ -16,5 +16,14 @@ namespace Inchirieri_de_casete_video
         {
             InitializeComponent();
         }
+
+        private void InitializeComboBox()
+        {
+            
+        }
+        private void ageRatingDrop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

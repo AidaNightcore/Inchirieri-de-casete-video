@@ -6,23 +6,23 @@ using System.Threading.Tasks;
 
 namespace Inchirieri_de_casete_video
 {
-    internal class Client
+    public class Client
     {
-        private int id; 
+        private string id; 
         private string name;
         private string surname;
         private DateTime birthdayDate;
         private string phone;
         private string adress; 
 
-        public int Id { get => id; set => id = value;  }
+        public string Id { get => id; set => id = value;  }
         public string Name { get => name; set => name = value; } 
         public string Surname { get => surname; set => surname = value; }
         public DateTime BirtdayDate { get => birthdayDate; set => birthdayDate = value; }
         public string Phone { get => phone; set => phone = value; }
         public string Adress { get => adress; set => adress = value; }
         
-        public Client(int v_id, string v_name, string v_surname, string v_phone, DateTime v_birthdayDate, string v_adress) {
+        public Client(string v_id, string v_name, string v_surname, string v_phone, DateTime v_birthdayDate, string v_adress) {
             id=v_id; 
             name=v_name;
             surname=v_surname;

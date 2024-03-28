@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Inchirieri_de_casete_video
 {
-    enum Genre
+    public enum AgeRating
     {
         G,
         PG, 
@@ -14,34 +15,46 @@ namespace Inchirieri_de_casete_video
         R,
         NC17
     }
-    internal class Movie{
-        private int id;
+
+    public class Movie{
+        private string id;
         private string name;
         private DateTime publishDate;
-        private string rating;
+        private int rating;
         private int price;
-        private Genre genre;
+        private AgeRating ageRating;
         private int copies;
-
-        public int Id { get => id; set => id = value; }
+        private string[] languages;
+        
+        public string Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
-       
         public DateTime BirtdayDate { get => publishDate; set => publishDate = value; }
-        public string Phone { get => rating; set => rating = value; }
-        public Genre Genre { get => genre; set => genre = value; }
+        public int Rating { get => rating; set => rating = value; }
+        public AgeRating AgeRating { get => ageRating; set => ageRating = value; }
         public int Copies { get => copies; set => copies = value; }
         public int Price { get => price; set => price = value; }
+        public string[] Languages { get => languages; set => languages = value; }
 
-        public Movie(int v_id, string v_name, Genre v_genre, string v_rating, DateTime v_publishDate, int v_copies)
+        public Movie(string v_id, string v_name, AgeRating v_ageRating, int v_rating, DateTime v_publishDate, int v_copies, string[] v_languages)
         {
             id = v_id;
             name = v_name;
             rating = v_rating;
-            genre = v_genre;
+            ageRating = v_ageRating;
             copies = v_copies;  
             publishDate = v_publishDate;
-            
+            languages = (string[])v_languages.Clone();
         }
+
+        public object Clone()
+        {
+            Movie copy = (Movie)this.MemberwiseClone();
+            string[] langaugesNew = (string[])languages.Clone();
+            copy.languages = langaugesNew;
+            return copy;
+        }
+
+
     }
 
 

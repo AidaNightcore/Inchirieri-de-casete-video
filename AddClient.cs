@@ -12,9 +12,9 @@ namespace Inchirieri_de_casete_video
 {
     public partial class AddClient : Form
     {
-        public AddClient()
+        private void barPanel_Paint(object sender, PaintEventArgs e)
         {
-            InitializeComponent();
+
         }
     }
 }
