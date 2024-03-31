@@ -14,12 +14,17 @@ namespace Inchirieri_de_casete_video
 {
     public partial class AddClient : Form
     {
-        private Main mainForm;
+        private List<Client> clients = new List<Client>();
+        
         private DataHandler dataHandler;
-        public AddClient(Main mainForm)
+        private string clientsFilePath;
+
+        public AddClient(List<Client> clients, string clientsFilePath)
         {
             InitializeComponent();
-            this.mainForm = mainForm;
+            this.clients = clients;
+            this.clientsFilePath = clientsFilePath;
+            this.dataHandler = new DataHandler(clientsFilePath, null, null);
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -43,12 +48,10 @@ namespace Inchirieri_de_casete_video
             
             clients.Add(newClient);
 
-            
             dataHandler.SaveClients(clients);
 
             
             this.Close();
-            mainForm.AddClientToList(newClient);
 
         }
 

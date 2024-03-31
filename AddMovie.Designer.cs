@@ -1,4 +1,6 @@
-﻿namespace Inchirieri_de_casete_video
+﻿using System;
+
+namespace Inchirieri_de_casete_video
 {
     partial class AddMovie
     {
@@ -36,7 +38,7 @@
             this.movieNameTB = new System.Windows.Forms.TextBox();
             this.ageRatingLabel = new System.Windows.Forms.Label();
             this.publishDateLabel = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
+            this.moviePublishDatePicker = new System.Windows.Forms.DateTimePicker();
             this.genreLabel = new System.Windows.Forms.Label();
             this.priceLabel = new System.Windows.Forms.Label();
             this.copiesLabel = new System.Windows.Forms.Label();
@@ -44,7 +46,7 @@
             this.copiesNumeric = new System.Windows.Forms.NumericUpDown();
             this.priceNumeric = new System.Windows.Forms.NumericUpDown();
             this.ageRatingDrop = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.genreTB = new System.Windows.Forms.TextBox();
             this.langaugesTB = new System.Windows.Forms.TextBox();
             this.barPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.copiesNumeric)).BeginInit();
@@ -127,13 +129,13 @@
             this.publishDateLabel.TabIndex = 13;
             this.publishDateLabel.Text = "Publish Date";
             // 
-            // dateTimePicker1
+            // moviePublishDatePicker
             // 
-            this.dateTimePicker1.Location = new System.Drawing.Point(33, 181);
-            this.dateTimePicker1.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(270, 26);
-            this.dateTimePicker1.TabIndex = 3;
+            this.moviePublishDatePicker.Location = new System.Drawing.Point(33, 181);
+            this.moviePublishDatePicker.MinDate = new System.DateTime(1910, 1, 1, 0, 0, 0, 0);
+            this.moviePublishDatePicker.Name = "moviePublishDatePicker";
+            this.moviePublishDatePicker.Size = new System.Drawing.Size(270, 26);
+            this.moviePublishDatePicker.TabIndex = 3;
             // 
             // genreLabel
             // 
@@ -188,6 +190,12 @@
             // 
             // ageRatingDrop
             // 
+            this.ageRatingDrop.DataSource = new Inchirieri_de_casete_video.AgeRating[] {
+        Inchirieri_de_casete_video.AgeRating.G,
+        Inchirieri_de_casete_video.AgeRating.PG,
+        Inchirieri_de_casete_video.AgeRating.PG13,
+        Inchirieri_de_casete_video.AgeRating.R,
+        Inchirieri_de_casete_video.AgeRating.NC17};
             this.ageRatingDrop.FormattingEnabled = true;
             this.ageRatingDrop.Location = new System.Drawing.Point(338, 101);
             this.ageRatingDrop.Name = "ageRatingDrop";
@@ -195,12 +203,12 @@
             this.ageRatingDrop.TabIndex = 20;
             this.ageRatingDrop.SelectedIndexChanged += new System.EventHandler(this.ageRatingDrop_SelectedIndexChanged);
             // 
-            // textBox1
+            // genreTB
             // 
-            this.textBox1.Location = new System.Drawing.Point(338, 257);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(179, 26);
-            this.textBox1.TabIndex = 21;
+            this.genreTB.Location = new System.Drawing.Point(338, 257);
+            this.genreTB.Name = "genreTB";
+            this.genreTB.Size = new System.Drawing.Size(179, 26);
+            this.genreTB.TabIndex = 21;
             // 
             // langaugesTB
             // 
@@ -218,7 +226,7 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(554, 430);
             this.Controls.Add(this.langaugesTB);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.genreTB);
             this.Controls.Add(this.ageRatingDrop);
             this.Controls.Add(this.priceNumeric);
             this.Controls.Add(this.copiesNumeric);
@@ -226,7 +234,7 @@
             this.Controls.Add(this.copiesLabel);
             this.Controls.Add(this.priceLabel);
             this.Controls.Add(this.genreLabel);
-            this.Controls.Add(this.dateTimePicker1);
+            this.Controls.Add(this.moviePublishDatePicker);
             this.Controls.Add(this.publishDateLabel);
             this.Controls.Add(this.ageRatingLabel);
             this.Controls.Add(this.movieNameTB);
@@ -259,7 +267,7 @@
         private System.Windows.Forms.TextBox movieNameTB;
         private System.Windows.Forms.Label ageRatingLabel;
         private System.Windows.Forms.Label publishDateLabel;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
+        private System.Windows.Forms.DateTimePicker moviePublishDatePicker;
         private System.Windows.Forms.Label genreLabel;
         private System.Windows.Forms.Label priceLabel;
         private System.Windows.Forms.Label copiesLabel;
@@ -267,7 +275,7 @@
         private System.Windows.Forms.NumericUpDown copiesNumeric;
         private System.Windows.Forms.NumericUpDown priceNumeric;
         private System.Windows.Forms.ComboBox ageRatingDrop;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox genreTB;
         private System.Windows.Forms.TextBox langaugesTB;
     }
 }

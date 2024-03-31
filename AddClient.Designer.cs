@@ -6,7 +6,7 @@ namespace Inchirieri_de_casete_video
 {
     public partial class AddClient : Form
     {
-        List<Client> clients = new List<Client>();
+        
         
         public AddClient()
         {

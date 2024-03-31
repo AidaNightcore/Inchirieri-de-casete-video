@@ -16,6 +16,7 @@ namespace Inchirieri_de_casete_video
             moviesFilePath = v_moviesFilePath;
             rentalsFilePath = v_rentalsFilePath;
         }
+
         public void SaveClients(List<Client> clients)
         {
             SaveData(clients, clientsFilePath);
@@ -34,14 +35,29 @@ namespace Inchirieri_de_casete_video
         {
             try
             {
-                using (FileStream fileStream = new FileStream(filePath, FileMode.Create, FileAccess.Write))
-                using (StreamWriter writer = new StreamWriter(fileStream))
+                if (!File.Exists(filePath))
                 {
-                    foreach (var item in data)
+                    using (FileStream createStream = File.Create(filePath))
                     {
-                        writer.WriteLine(item.ToString());
+                        using (StreamWriter writer = new StreamWriter(filePath, true))
+                        {
+                            foreach (var item in data)
+                            {
+                                writer.WriteLine(item.ToString());
+                            }
+                        }
                     }
                 }
+                else
+                    using (StreamWriter writer = new StreamWriter(filePath, true))
+                    {
+                        foreach (var item in data)
+                        {
+                            writer.WriteLine(item.ToString());
+                        }
+                    }
+
+
             }
             catch (Exception ex)
             {

@@ -21,9 +21,10 @@ namespace Inchirieri_de_casete_video
         private string name;
         private DateTime publishDate;
         private int rating;
-        private int price;
+        private decimal price;
         private AgeRating ageRating;
         private int copies;
+        private string genre;  
         private string[] languages;
         
         public string Id { get => id; set => id = value; }
@@ -32,10 +33,10 @@ namespace Inchirieri_de_casete_video
         public int Rating { get => rating; set => rating = value; }
         public AgeRating AgeRating { get => ageRating; set => ageRating = value; }
         public int Copies { get => copies; set => copies = value; }
-        public int Price { get => price; set => price = value; }
+        public decimal Price { get => price; set => price = value; }
         public string[] Languages { get => languages; set => languages = value; }
 
-        public Movie(string v_id, string v_name, AgeRating v_ageRating, int v_rating, DateTime v_publishDate, int v_copies, string[] v_languages)
+        public Movie(string v_id, string v_name, decimal v_price, AgeRating v_ageRating, int v_rating, DateTime v_publishDate, int v_copies, string v_genre, string[] v_languages)
         {
             id = v_id;
             name = v_name;
@@ -43,6 +44,8 @@ namespace Inchirieri_de_casete_video
             ageRating = v_ageRating;
             copies = v_copies;  
             publishDate = v_publishDate;
+            price = v_price;
+            genre = v_genre;
             languages = (string[])v_languages.Clone();
         }
 
