@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace Inchirieri_de_casete_video
 {
@@ -24,7 +18,7 @@ namespace Inchirieri_de_casete_video
             MovieId = movieId;
             TotalPrice = totalPrice;
             RentalDate = rentalDate;
-            DueDate = dueDate; 
+            DueDate = dueDate;
         }
 
         public override string ToString()
@@ -34,11 +28,9 @@ namespace Inchirieri_de_casete_video
 
         private decimal CalculateTotalPrice(decimal pricePerDay)
         {
-            // Calculate the number of rental days
             TimeSpan rentalPeriod = DueDate - RentalDate;
             int rentalDays = (int)Math.Ceiling(rentalPeriod.TotalDays);
 
-            // Calculate the total price
             return pricePerDay * rentalDays;
         }
 

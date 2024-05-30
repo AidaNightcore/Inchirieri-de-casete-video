@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Drawing.Printing;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Windows.Forms;
 
 namespace Inchirieri_de_casete_video
@@ -23,7 +23,7 @@ namespace Inchirieri_de_casete_video
             PopulateClientComboBox();
             PopulateMovieComboBox();
 
-            // Initialize the PrintDocument object and subscribe to the PrintPage event
+
             printDocument = new PrintDocument();
             printDocument.PrintPage += PrintDocument_PrintPage;
         }
@@ -32,7 +32,7 @@ namespace Inchirieri_de_casete_video
         {
             List<Client> clients = dataAccess.GetClients();
             clientNameTB.DataSource = clients;
-            clientNameTB.DisplayMember = "ClientName"; // Assuming Client class has a Name property
+            clientNameTB.DisplayMember = "ClientName";
             clientNameTB.ValueMember = "Id";
         }
 
@@ -40,13 +40,13 @@ namespace Inchirieri_de_casete_video
         {
             List<Movie> movies = dataAccess.GetMovies();
             movieNameTB.DataSource = movies;
-            movieNameTB.DisplayMember = "MovieTitle"; // Assuming Movie class has a Title property
+            movieNameTB.DisplayMember = "MovieTitle";
             movieNameTB.ValueMember = "Id";
 
-            // Subscribe to the SelectedIndexChanged event of the movie combo box
+
             movieNameTB.SelectedIndexChanged += MovieNameTB_SelectedIndexChanged;
 
-            // Initialize the labels with the values for the first movie in the list
+
             if (movies.Count > 0)
             {
                 Movie selectedMovie = (Movie)movieNameTB.SelectedItem;
@@ -55,7 +55,7 @@ namespace Inchirieri_de_casete_video
             }
         }
 
-        // Event handler for movie combo box selection change
+
         private void MovieNameTB_SelectedIndexChanged(object sender, EventArgs e)
         {
             ComboBox comboBox = (ComboBox)sender;
@@ -68,13 +68,13 @@ namespace Inchirieri_de_casete_video
             }
         }
 
-        // Event handler for return date picker value changed
+
         private void ReturnDatePicker_ValueChanged(object sender, EventArgs e)
         {
             UpdateTotalPriceAndDaysRented();
         }
 
-        // Update total price and days rented based on selected movie and return date
+
         private void UpdateTotalPriceAndDaysRented()
         {
             if (movieNameTB.SelectedItem != null)
@@ -122,10 +122,9 @@ namespace Inchirieri_de_casete_video
             Random random = new Random();
             int id = random.Next();
             UpdatePricePerDayLabel(selectedMovie.Price);
-            int updatedCopies = selectedMovie.Copies - 1; // Decrement the number of copies
+            int updatedCopies = selectedMovie.Copies - 1;
             UpdateCopiesLeftLabel(updatedCopies);
 
-            // Update the number of copies left in the database
             dataAccess.UpdateMovieCopies(parsedMovieId, updatedCopies);
 
             Rental newRental = new Rental(id, parsedClientId, parsedMovieId, totalPrice, rentalDate, dueDate);
@@ -165,39 +164,36 @@ namespace Inchirieri_de_casete_video
 
         private void PrintButton_Click(object sender, EventArgs e)
         {
-            // Show print dialog to select printer and configure settings
             PrintDialog printDialog = new PrintDialog();
             printDialog.Document = printDocument;
 
             if (printDialog.ShowDialog() == DialogResult.OK)
             {
-                // Start the printing process
                 printDocument.Print();
             }
         }
 
-        // Event handler for printing the rental details
+
         private void PrintDocument_PrintPage(object sender, PrintPageEventArgs e)
         {
-            // Define the font and brush for drawing text
+
             Font font = new Font("Arial", 12);
             SolidBrush brush = new SolidBrush(Color.Black);
 
-            // Retrieve rental details from form controls
+
             string movieName = movieNameTB.Text;
             string clientName = clientNameTB.Text;
             DateTime dueDate = returnDatePicker.Value;
             string totalPrice = priceTotalLBL.Text;
             string daysRented = daysRentedlabelShow.Text;
 
-            // Construct the rental details string
+
             string details = $"Movie Name: {movieName}\n" +
                              $"Client Name: {clientName}\n" +
                              $"Due Date: {dueDate.ToShortDateString()}\n" +
                              $"Total Price: {totalPrice}\n" +
                              $"Days Rented: {daysRented}";
 
-            // Draw the rental details on the print document
             e.Graphics.DrawString(details, font, brush, new PointF(100, 100));
         }
 

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.OleDb;
 
 namespace Inchirieri_de_casete_video
@@ -165,7 +164,7 @@ namespace Inchirieri_de_casete_video
             new OleDbParameter("Copies", movie.Copies),
             new OleDbParameter("Genre", movie.Genre.ToString()),
             new OleDbParameter("Languages", string.Join(",", movie.Languages)),
-            new OleDbParameter("ImageData", movie.ImageData) 
+            new OleDbParameter("ImageData", movie.ImageData)
         };
 
             ExecuteNonQuery(query, parameters);
@@ -216,7 +215,7 @@ namespace Inchirieri_de_casete_video
             string query = "INSERT INTO Rentals (ID, ClientId, MovieId, TotalPrice, RentDate, DueDate) VALUES (?, ?, ?, ?, ?, ?)";
             List<OleDbParameter> parameters = new List<OleDbParameter>
             {
-                
+
                 new OleDbParameter("ID", rental.Id),
                 new OleDbParameter("ClientId", rental.ClientId),
                 new OleDbParameter("TotalPrice", rental.TotalPrice),

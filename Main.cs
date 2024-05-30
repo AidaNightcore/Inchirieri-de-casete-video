@@ -1,11 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Inchirieri_de_casete_video
@@ -21,9 +15,9 @@ namespace Inchirieri_de_casete_video
         {
             InitializeComponent();
 
-            clientsList = new List<Client>(); 
-            moviesList = new List<Movie>(); 
-            rentalsList = new List<Rental>(); 
+            clientsList = new List<Client>();
+            moviesList = new List<Movie>();
+            rentalsList = new List<Rental>();
         }
 
 
@@ -38,7 +32,7 @@ namespace Inchirieri_de_casete_video
         {
 
         }
-        
+
 
         private void addClients_Click(object sender, EventArgs e)
         {

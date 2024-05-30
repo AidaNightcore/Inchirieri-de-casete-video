@@ -4,9 +4,9 @@ namespace Inchirieri_de_casete_video
 {
     public enum Genre
     {
-        Action, 
+        Action,
         Romance,
-        Kids, 
+        Kids,
         Psychological,
         Horror
     }
@@ -31,7 +31,7 @@ namespace Inchirieri_de_casete_video
         private Genre genre;
         private string[] languages;
         private string imageData;
-        public string ImageData { get => imageData; set=> imageData=value; }
+        public string ImageData { get => imageData; set => imageData = value; }
 
         public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
@@ -54,7 +54,7 @@ namespace Inchirieri_de_casete_video
             price = v_price;
             genre = v_genre;
             languages = (string[])v_languages.Clone();
-            imageData= v_imageData;
+            imageData = v_imageData;
         }
 
 
