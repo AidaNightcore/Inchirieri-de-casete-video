@@ -13,7 +13,6 @@ namespace Inchirieri_de_casete_video
             InitializeComponent();
         }
 
-        
         #region Windows Form Designer generated code
 
         /// <summary>

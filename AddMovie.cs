@@ -1,37 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Inchirieri_de_casete_video
 {
     public partial class AddMovie : Form
     {
-        private List<Movie> movies = new List<Movie>();
-        private DataHandler dataHandler;
-        private string moviesFilePath;
+        private DataAccess dataAccess;
 
-        public AddMovie(List<Movie> movies, string moviesFilePath)
+        public AddMovie(DataAccess dataAccess)
         {
             InitializeComponent();
-            this.movies = movies;
-            this.moviesFilePath = moviesFilePath;
-            this.dataHandler = new DataHandler(moviesFilePath, null, null);
-        }
-
-        private void InitializeComboBox()
-        {
+            this.dataAccess = dataAccess;
+            ageRatingDrop.DataSource = Enum.GetValues(typeof(AgeRating));
             
-        }
-
-        private void ageRatingDrop_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
 
         private void cancelBtn_Click(object sender, EventArgs e)
@@ -41,23 +23,34 @@ namespace Inchirieri_de_casete_video
 
         private void addMovieBtn_Click(object sender, EventArgs e)
         {
-            string id = movieNameTB.Text.ToString() + moviePublishDatePicker.Value.ToString();
-            string name = movieNameTB.Text;  
-            DateTime publishDate = moviePublishDatePicker.Value.Date;
-            decimal price = priceNumeric.Value;
-            int copies = (int)copiesNumeric.Value; 
-            AgeRating ageRating = (AgeRating)ageRatingDrop.SelectedItem;
-            int rating = 0; 
-            string genre = genreTB.Text;
-            string[] langauges = langaugesTB.Text.Split(',');
+            try
+            {
+                string id = Guid.NewGuid().ToString(); // Generate a unique ID
+                string name = movieNameTB.Text;
+                DateTime publishDate = moviePublishDatePicker.Value.Date;
+                decimal price = priceNumeric.Value;
+                int copies = (int)copiesNumeric.Value;
+                AgeRating ageRating = (AgeRating)ageRatingDrop.SelectedItem;
+                int rating = 0; // Assume a default rating or collect from UI if needed
+                Genre genre = (Genre)comboBox1.SelectedItem;
 
-            Movie newMovie = new Movie(id, name, price, ageRating, rating, publishDate, copies, genre, langauges);
+                // Get languages entered by the user
+                string languagesText = langaugesTB.Text;
+                string[] languages = languagesText.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
+                // Add new movie to database
+                Movie newMovie = new Movie(id, name, price, ageRating, rating, publishDate, copies, genre, languages);
+                dataAccess.AddMovie(newMovie);
 
-            movies.Add(newMovie);
-            dataHandler.SaveMovies(movies);
-
-            this.Close();
+                MessageBox.Show("Movie added successfully!");
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("An error occurred: " + ex.Message);
+            }
         }
+
+        
     }
 }

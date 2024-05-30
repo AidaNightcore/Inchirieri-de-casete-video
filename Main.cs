@@ -16,30 +16,23 @@ namespace Inchirieri_de_casete_video
         private List<Client> clientsList;
         private List<Movie> moviesList;
         private List<Rental> rentalsList;
-        private DataHandler dataHandler;
-        string clientsFilePath = "clients.txt";
-        string moviesFilePath = "movies.txt";
-        string rentalsFilePath = "rentals.txt";
+        string connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=\"E:\\Ase\\POO\\Inchirieri de casete video\\InchiriereCasete.accdb\"";
         public Main()
         {
             InitializeComponent();
-            InitializeDataHandler(clientsFilePath, moviesFilePath, rentalsFilePath); 
 
             clientsList = new List<Client>(); 
             moviesList = new List<Movie>(); 
             rentalsList = new List<Rental>(); 
         }
 
-        private void InitializeDataHandler(string clientsFilePath, string moviesFilePath, string rentalsFilePath)
-        {
-            dataHandler = new DataHandler(clientsFilePath, moviesFilePath, rentalsFilePath);
-        }
 
         private void clientMenu_Click(object sender, EventArgs e)
         {
-            AddClient addClientForm = new AddClient(clientsList, clientsFilePath);
+            AddClient addClientForm = new AddClient(new DataAccess(connectionString));
             addClientForm.ShowDialog();
         }
+
 
         private void deleteUsers_Click(object sender, EventArgs e)
         {
@@ -49,16 +42,18 @@ namespace Inchirieri_de_casete_video
 
         private void addClients_Click(object sender, EventArgs e)
         {
-            AddClient addClientForm = new AddClient(clientsList, clientsFilePath);
+            AddClient addClientForm = new AddClient(new DataAccess(connectionString));
             addClientForm.ShowDialog();
         }
-        
+
 
         private void addMovie_Click(object sender, EventArgs e)
         {
-            AddMovie addMovieForm = new AddMovie(moviesList, moviesFilePath);
+            AddMovie addMovieForm = new AddMovie(new DataAccess(connectionString));
             addMovieForm.ShowDialog();
         }
+
+
 
         private void deleteMovie_Click(object sender, EventArgs e)
         {
@@ -67,7 +62,7 @@ namespace Inchirieri_de_casete_video
 
         private void addRental_Click(object sender, EventArgs e)
         {
-            AddRental rentMovieForm = new AddRental();
+            AddRental rentMovieForm = new AddRental(rentalsList);
             rentMovieForm.ShowDialog();
         }
 
@@ -78,13 +73,14 @@ namespace Inchirieri_de_casete_video
 
         private void moviesMenu_Click(object sender, EventArgs e)
         {
-            AddMovie addMovieForm = new AddMovie(moviesList, moviesFilePath);
+            AddMovie addMovieForm = new AddMovie(new DataAccess(connectionString));
             addMovieForm.ShowDialog();
         }
 
+
         private void rentalsMenu_Click(object sender, EventArgs e)
         {
-            AddRental rentMovieForm = new AddRental();
+            AddRental rentMovieForm = new AddRental(rentalsList);
             rentMovieForm.ShowDialog();
         }
         public void AddClientToList(Client client)

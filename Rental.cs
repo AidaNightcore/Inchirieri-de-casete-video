@@ -8,26 +8,50 @@ using System.Xml.Linq;
 
 namespace Inchirieri_de_casete_video
 {
-    public class Rental{
-        private string id;
-        private string clientId;
-        private string movieId;
-        private int totalPrice;
-        private int daysRented;
+    public class Rental
+    {
+        public string Id { get; private set; }
+        public string ClientId { get; private set; }
+        public string MovieId { get; private set; }
+        public decimal TotalPrice { get; private set; }
+        public DateTime RentalDate { get; private set; }
+        public DateTime DueDate { get; set; }
 
-        public string Id { get => id; set => id = value; }
-        public string ClientId { get => clientId; set => clientId = value; }
-        public string MovieId { get => movieId; set => movieId = value; }
-        public int TotalPrice { get => totalPrice; set => totalPrice = value; }
-        public int DaysRented { get => daysRented; set => daysRented = value; }
-
-        public Rental(string v_id, string v_clientId, string v_movieId, int v_totalPrice, int v_daysRented)
+        public Rental(string id, string clientId, string movieId, decimal totalPrice, DateTime rentalDate, DateTime dueDate)
         {
-            id = v_id;
-            clientId = v_clientId;
-            movieId= v_movieId;
-            totalPrice = v_totalPrice;
-            daysRented = v_daysRented;
+            Id = id;
+            ClientId = clientId;
+            MovieId = movieId;
+            TotalPrice = totalPrice;
+            RentalDate = rentalDate;
+            DueDate = dueDate; 
+        }
+
+        public override string ToString()
+        {
+            return $"{Id}\n{ClientId}\n{MovieId}\n{TotalPrice}\n{RentalDate}\n";
+        }
+
+        private decimal CalculateTotalPrice(decimal pricePerDay)
+        {
+            // Calculate the number of rental days
+            TimeSpan rentalPeriod = DueDate - RentalDate;
+            int rentalDays = (int)Math.Ceiling(rentalPeriod.TotalDays);
+
+            // Calculate the total price
+            return pricePerDay * rentalDays;
+        }
+
+        public bool CanRent(Client client, Movie movie)
+        {
+            if (client.AgeRating() >= (int)movie.AgeRating)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

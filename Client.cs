@@ -1,51 +1,41 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Inchirieri_de_casete_video
 {
     public class Client
     {
-        private string id; 
-        private string name;
-        private string surname;
-        private DateTime birthdayDate;
-        private string phone;
-        private string adress; 
+        public string Id { get; private set; }
+        public string Name { get; private set; }
+        public string Surname { get; private set; }
+        public DateTime BirthdayDate { get; private set; }
+        public string Phone { get; private set; }
+        public string Address { get; private set; }
 
-        public string Id { get => id; set => id = value;  }
-        public string Name { get => name; set => name = value; } 
-        public string Surname { get => surname; set => surname = value; }
-        public DateTime BirtdayDate { get => birthdayDate; set => birthdayDate = value; }
-        public string Phone { get => phone; set => phone = value; }
-        public string Adress { get => adress; set => adress = value; }
-        
-        public Client(string v_id, string v_name, string v_surname, string v_phone, DateTime v_birthdayDate, string v_adress) {
-            id=v_id; 
-            name=v_name;
-            surname=v_surname;
-            phone=v_phone;
-            birthdayDate = v_birthdayDate;
-            adress=v_adress;
+        public Client(string id, string name, string surname, string phone, DateTime birthdayDate, string address)
+        {
+            Id = id;
+            Name = name;
+            Surname = surname;
+            Phone = phone;
+            BirthdayDate = birthdayDate;
+            Address = address;
         }
 
-        public int age()
+        public int Age()
         {
-            int age = DateTime.Today.Year - birthdayDate.Year;
-            if (birthdayDate.Date > DateTime.Today.AddYears(-age))
+            int age = DateTime.Today.Year - BirthdayDate.Year;
+            if (BirthdayDate.Date > DateTime.Today.AddYears(-age))
                 age--;
             return age;
         }
 
-        public int ageRating(Client s)
+        public int AgeRating()
         {
-            if (s.age() > 17)
+            if (Age() > 17)
             {
                 return 4;
             }
-            else if (s.age() < 17 && s.age() >= 13)
+            else if (Age() < 17 && Age() >= 13)
             {
                 return 3;
             }
@@ -54,10 +44,10 @@ namespace Inchirieri_de_casete_video
                 return 2;
             }
         }
-        public object Clone()
+
+        public override string ToString()
         {
-            Client copy = (Client)this.MemberwiseClone();
-            return copy;
+            return $"Client: {Name} {Surname}\nID: {Id}\nPhone Number: {Phone}\nBirthday: {BirthdayDate}\nAddress: {Address}\n";
         }
     }
 }

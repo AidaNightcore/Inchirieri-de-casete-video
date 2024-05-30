@@ -46,8 +46,8 @@ namespace Inchirieri_de_casete_video
             this.copiesNumeric = new System.Windows.Forms.NumericUpDown();
             this.priceNumeric = new System.Windows.Forms.NumericUpDown();
             this.ageRatingDrop = new System.Windows.Forms.ComboBox();
-            this.genreTB = new System.Windows.Forms.TextBox();
             this.langaugesTB = new System.Windows.Forms.TextBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.barPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.copiesNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumeric)).BeginInit();
@@ -190,25 +190,18 @@ namespace Inchirieri_de_casete_video
             // 
             // ageRatingDrop
             // 
-            this.ageRatingDrop.DataSource = new Inchirieri_de_casete_video.AgeRating[] {
-        Inchirieri_de_casete_video.AgeRating.G,
-        Inchirieri_de_casete_video.AgeRating.PG,
-        Inchirieri_de_casete_video.AgeRating.PG13,
-        Inchirieri_de_casete_video.AgeRating.R,
-        Inchirieri_de_casete_video.AgeRating.NC17};
+            
             this.ageRatingDrop.FormattingEnabled = true;
+            this.ageRatingDrop.Items.AddRange(new object[] {
+            Inchirieri_de_casete_video.AgeRating.G,
+            Inchirieri_de_casete_video.AgeRating.PG,
+            Inchirieri_de_casete_video.AgeRating.PG13,
+            Inchirieri_de_casete_video.AgeRating.R,
+            Inchirieri_de_casete_video.AgeRating.NC17});
             this.ageRatingDrop.Location = new System.Drawing.Point(338, 101);
             this.ageRatingDrop.Name = "ageRatingDrop";
             this.ageRatingDrop.Size = new System.Drawing.Size(179, 28);
             this.ageRatingDrop.TabIndex = 20;
-            this.ageRatingDrop.SelectedIndexChanged += new System.EventHandler(this.ageRatingDrop_SelectedIndexChanged);
-            // 
-            // genreTB
-            // 
-            this.genreTB.Location = new System.Drawing.Point(338, 257);
-            this.genreTB.Name = "genreTB";
-            this.genreTB.Size = new System.Drawing.Size(179, 26);
-            this.genreTB.TabIndex = 21;
             // 
             // langaugesTB
             // 
@@ -219,14 +212,28 @@ namespace Inchirieri_de_casete_video
             this.langaugesTB.Size = new System.Drawing.Size(268, 83);
             this.langaugesTB.TabIndex = 22;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DataSource = new Inchirieri_de_casete_video.Genre[] {
+                                    Inchirieri_de_casete_video.Genre.Horror,
+                                    Inchirieri_de_casete_video.Genre.Action,
+                                    Inchirieri_de_casete_video.Genre.Romance,
+                                    Inchirieri_de_casete_video.Genre.Psychological,
+                                    Inchirieri_de_casete_video.Genre.Kids};
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(338, 257);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(179, 28);
+            this.comboBox1.TabIndex = 23;
+            // 
             // AddMovie
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(554, 430);
+            this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.langaugesTB);
-            this.Controls.Add(this.genreTB);
             this.Controls.Add(this.ageRatingDrop);
             this.Controls.Add(this.priceNumeric);
             this.Controls.Add(this.copiesNumeric);
@@ -275,7 +282,7 @@ namespace Inchirieri_de_casete_video
         private System.Windows.Forms.NumericUpDown copiesNumeric;
         private System.Windows.Forms.NumericUpDown priceNumeric;
         private System.Windows.Forms.ComboBox ageRatingDrop;
-        private System.Windows.Forms.TextBox genreTB;
         private System.Windows.Forms.TextBox langaugesTB;
+        private System.Windows.Forms.ComboBox comboBox1;
     }
 }
