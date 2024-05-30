@@ -117,7 +117,7 @@ namespace Inchirieri_de_casete_video
         public List<Movie> GetMovies()
         {
             List<Movie> movies = new List<Movie>();
-            string query = "SELECT ID, MovieName, Price, AgeRating, Rating, PublishDate, Copies, Genre, Languages FROM Movies";
+            string query = "SELECT ID, MovieName, Price, AgeRating, Rating, PublishDate, Copies, Genre, Languages, ImageData FROM Movies";
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
@@ -137,7 +137,7 @@ namespace Inchirieri_de_casete_video
                                 Convert.ToInt32(reader["Rating"]),
                                 Convert.ToDateTime(reader["PublishDate"]),
                                 Convert.ToInt32(reader["Copies"]),
-                                (Genre)Genre.Parse(typeof(Genre), reader["Genre"].ToString()),
+                                (Genre)Enum.Parse(typeof(Genre), reader["Genre"].ToString()),
                                 reader["Languages"].ToString().Split(','),
                                 reader["ImageData"].ToString()
                             );
@@ -149,6 +149,7 @@ namespace Inchirieri_de_casete_video
 
             return movies;
         }
+
 
         public void AddMovie(Movie movie)
         {
@@ -265,5 +266,17 @@ namespace Inchirieri_de_casete_video
 
             ExecuteNonQuery(query, parameters);
         }
+        public void UpdateMovieCopies(int movieId, int newCopies)
+        {
+            string query = "UPDATE Movies SET Copies = ? WHERE ID = ?";
+            List<OleDbParameter> parameters = new List<OleDbParameter>
+            {
+                new OleDbParameter("Copies", newCopies),
+                new OleDbParameter("ID", movieId)
+            };
+
+            ExecuteNonQuery(query, parameters);
+        }
+
     }
 }

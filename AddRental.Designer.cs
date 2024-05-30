@@ -46,18 +46,19 @@
             this.copiesLeftLabel = new System.Windows.Forms.Label();
             this.copiesLeftLBL = new System.Windows.Forms.Label();
             this.clientNameTB = new System.Windows.Forms.ComboBox();
-            this.movieNameTB = new System.Windows.Forms.ComboBox();
-            this.inchiriereCaseteMovies = new Inchirieri_de_casete_video.InchiriereCaseteMovies();
-            this.moviesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.moviesTableAdapter = new Inchirieri_de_casete_video.InchiriereCaseteMoviesTableAdapters.MoviesTableAdapter();
-            this.inchiriereCaseteDataSet = new Inchirieri_de_casete_video.InchiriereCaseteDataSet();
             this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.inchiriereCaseteDataSet = new Inchirieri_de_casete_video.InchiriereCaseteDataSet();
+            this.movieNameTB = new System.Windows.Forms.ComboBox();
+            this.moviesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.inchiriereCaseteMovies = new Inchirieri_de_casete_video.InchiriereCaseteMovies();
+            this.moviesTableAdapter = new Inchirieri_de_casete_video.InchiriereCaseteMoviesTableAdapters.MoviesTableAdapter();
             this.clientsTableAdapter = new Inchirieri_de_casete_video.InchiriereCaseteDataSetTableAdapters.ClientsTableAdapter();
+            this.PrintButton = new System.Windows.Forms.Button();
             this.barPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMovies)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.moviesBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteDataSet)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moviesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMovies)).BeginInit();
             this.SuspendLayout();
             // 
             // returnDatePicker
@@ -166,7 +167,7 @@
             // priceTotalLBL
             // 
             this.priceTotalLBL.AutoSize = true;
-            this.priceTotalLBL.Location = new System.Drawing.Point(368, 248);
+            this.priceTotalLBL.Location = new System.Drawing.Point(382, 248);
             this.priceTotalLBL.Name = "priceTotalLBL";
             this.priceTotalLBL.Size = new System.Drawing.Size(18, 20);
             this.priceTotalLBL.TabIndex = 44;
@@ -175,7 +176,7 @@
             // daysRentedlabelShow
             // 
             this.daysRentedlabelShow.AutoSize = true;
-            this.daysRentedlabelShow.Location = new System.Drawing.Point(537, 248);
+            this.daysRentedlabelShow.Location = new System.Drawing.Point(555, 248);
             this.daysRentedlabelShow.Name = "daysRentedlabelShow";
             this.daysRentedlabelShow.Size = new System.Drawing.Size(18, 20);
             this.daysRentedlabelShow.TabIndex = 45;
@@ -193,7 +194,7 @@
             // priceDayLabel
             // 
             this.priceDayLabel.AutoSize = true;
-            this.priceDayLabel.Location = new System.Drawing.Point(364, 160);
+            this.priceDayLabel.Location = new System.Drawing.Point(382, 157);
             this.priceDayLabel.Name = "priceDayLabel";
             this.priceDayLabel.Size = new System.Drawing.Size(18, 20);
             this.priceDayLabel.TabIndex = 47;
@@ -211,7 +212,7 @@
             // copiesLeftLBL
             // 
             this.copiesLeftLBL.AutoSize = true;
-            this.copiesLeftLBL.Location = new System.Drawing.Point(537, 160);
+            this.copiesLeftLBL.Location = new System.Drawing.Point(555, 157);
             this.copiesLeftLBL.Name = "copiesLeftLBL";
             this.copiesLeftLBL.Size = new System.Drawing.Size(18, 20);
             this.copiesLeftLBL.TabIndex = 50;
@@ -226,6 +227,16 @@
             this.clientNameTB.Size = new System.Drawing.Size(283, 28);
             this.clientNameTB.TabIndex = 51;
             // 
+            // clientsBindingSource
+            // 
+            this.clientsBindingSource.DataMember = "Clients";
+            this.clientsBindingSource.DataSource = this.inchiriereCaseteDataSet;
+            // 
+            // inchiriereCaseteDataSet
+            // 
+            this.inchiriereCaseteDataSet.DataSetName = "InchiriereCaseteDataSet";
+            this.inchiriereCaseteDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // movieNameTB
             // 
             this.movieNameTB.DataSource = this.moviesBindingSource;
@@ -235,33 +246,33 @@
             this.movieNameTB.Size = new System.Drawing.Size(283, 28);
             this.movieNameTB.TabIndex = 52;
             // 
-            // inchiriereCaseteMovies
-            // 
-            this.inchiriereCaseteMovies.DataSetName = "InchiriereCaseteMovies";
-            this.inchiriereCaseteMovies.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
             // moviesBindingSource
             // 
             this.moviesBindingSource.DataMember = "Movies";
             this.moviesBindingSource.DataSource = this.inchiriereCaseteMovies;
             // 
+            // inchiriereCaseteMovies
+            // 
+            this.inchiriereCaseteMovies.DataSetName = "InchiriereCaseteMovies";
+            this.inchiriereCaseteMovies.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // moviesTableAdapter
             // 
             this.moviesTableAdapter.ClearBeforeFill = true;
             // 
-            // inchiriereCaseteDataSet
-            // 
-            this.inchiriereCaseteDataSet.DataSetName = "InchiriereCaseteDataSet";
-            this.inchiriereCaseteDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // clientsBindingSource
-            // 
-            this.clientsBindingSource.DataMember = "Clients";
-            this.clientsBindingSource.DataSource = this.inchiriereCaseteDataSet;
-            // 
             // clientsTableAdapter
             // 
             this.clientsTableAdapter.ClearBeforeFill = true;
+            // 
+            // PrintButton
+            // 
+            this.PrintButton.Location = new System.Drawing.Point(559, 339);
+            this.PrintButton.Name = "PrintButton";
+            this.PrintButton.Size = new System.Drawing.Size(63, 42);
+            this.PrintButton.TabIndex = 53;
+            this.PrintButton.Text = "Print";
+            this.PrintButton.UseVisualStyleBackColor = true;
+            this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
             // 
             // AddRental
             // 
@@ -269,6 +280,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(655, 410);
+            this.Controls.Add(this.PrintButton);
             this.Controls.Add(this.movieNameTB);
             this.Controls.Add(this.clientNameTB);
             this.Controls.Add(this.copiesLeftLBL);
@@ -295,10 +307,10 @@
             this.Load += new System.EventHandler(this.AddRental_Load);
             this.barPanel.ResumeLayout(false);
             this.barPanel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMovies)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.moviesBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteDataSet)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.moviesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMovies)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -330,5 +342,6 @@
         private InchiriereCaseteDataSet inchiriereCaseteDataSet;
         private System.Windows.Forms.BindingSource clientsBindingSource;
         private InchiriereCaseteDataSetTableAdapters.ClientsTableAdapter clientsTableAdapter;
+        private System.Windows.Forms.Button PrintButton;
     }
 }
