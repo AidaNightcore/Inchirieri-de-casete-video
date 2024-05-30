@@ -10,14 +10,14 @@ namespace Inchirieri_de_casete_video
 {
     public class Rental
     {
-        public string Id { get; private set; }
-        public string ClientId { get; private set; }
-        public string MovieId { get; private set; }
+        public int Id { get; private set; }
+        public int ClientId { get; private set; }
+        public int MovieId { get; private set; }
         public decimal TotalPrice { get; private set; }
         public DateTime RentalDate { get; private set; }
         public DateTime DueDate { get; set; }
 
-        public Rental(string id, string clientId, string movieId, decimal totalPrice, DateTime rentalDate, DateTime dueDate)
+        public Rental(int id, int clientId, int movieId, decimal totalPrice, DateTime rentalDate, DateTime dueDate)
         {
             Id = id;
             ClientId = clientId;

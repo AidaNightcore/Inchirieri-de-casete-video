@@ -45,10 +45,19 @@ namespace Inchirieri_de_casete_video
             this.rentalsSubMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.addRental = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteRental = new System.Windows.Forms.ToolStripMenuItem();
+            this.inchiriereCaseteMovies = new Inchirieri_de_casete_video.InchiriereCaseteMovies();
+            this.inchiriereCaseteMoviesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.inchiriereCaseteDataSet1 = new Inchirieri_de_casete_video.InchiriereCaseteDataSet1();
+            this.clientsBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.clientsTableAdapter = new Inchirieri_de_casete_video.InchiriereCaseteDataSet1TableAdapters.ClientsTableAdapter();
             this.mainMenu.SuspendLayout();
             this.clientsSubMenu.SuspendLayout();
             this.moviesSubMenu.SuspendLayout();
             this.rentalsSubMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMovies)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMoviesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteDataSet1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // mainMenu
@@ -121,14 +130,14 @@ namespace Inchirieri_de_casete_video
             // addMovie
             // 
             this.addMovie.Name = "addMovie";
-            this.addMovie.Size = new System.Drawing.Size(180, 22);
+            this.addMovie.Size = new System.Drawing.Size(107, 22);
             this.addMovie.Text = "Add";
             this.addMovie.Click += new System.EventHandler(this.addMovie_Click);
             // 
             // deleteMovie
             // 
             this.deleteMovie.Name = "deleteMovie";
-            this.deleteMovie.Size = new System.Drawing.Size(180, 22);
+            this.deleteMovie.Size = new System.Drawing.Size(107, 22);
             this.deleteMovie.Text = "Delete";
             this.deleteMovie.Click += new System.EventHandler(this.deleteMovie_Click);
             // 
@@ -145,16 +154,40 @@ namespace Inchirieri_de_casete_video
             // addRental
             // 
             this.addRental.Name = "addRental";
-            this.addRental.Size = new System.Drawing.Size(180, 22);
+            this.addRental.Size = new System.Drawing.Size(107, 22);
             this.addRental.Text = "Add";
             this.addRental.Click += new System.EventHandler(this.addRental_Click);
             // 
             // deleteRental
             // 
             this.deleteRental.Name = "deleteRental";
-            this.deleteRental.Size = new System.Drawing.Size(180, 22);
+            this.deleteRental.Size = new System.Drawing.Size(107, 22);
             this.deleteRental.Text = "Delete";
             this.deleteRental.Click += new System.EventHandler(this.deleteRental_Click);
+            // 
+            // inchiriereCaseteMovies
+            // 
+            this.inchiriereCaseteMovies.DataSetName = "InchiriereCaseteMovies";
+            this.inchiriereCaseteMovies.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // inchiriereCaseteMoviesBindingSource
+            // 
+            this.inchiriereCaseteMoviesBindingSource.DataSource = this.inchiriereCaseteMovies;
+            this.inchiriereCaseteMoviesBindingSource.Position = 0;
+            // 
+            // inchiriereCaseteDataSet1
+            // 
+            this.inchiriereCaseteDataSet1.DataSetName = "InchiriereCaseteDataSet1";
+            this.inchiriereCaseteDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // clientsBindingSource
+            // 
+            this.clientsBindingSource.DataMember = "Clients";
+            this.clientsBindingSource.DataSource = this.inchiriereCaseteDataSet1;
+            // 
+            // clientsTableAdapter
+            // 
+            this.clientsTableAdapter.ClearBeforeFill = true;
             // 
             // Main
             // 
@@ -175,11 +208,16 @@ namespace Inchirieri_de_casete_video
             this.Padding = new System.Windows.Forms.Padding(5);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rent Movie Cassetes";
+            this.Load += new System.EventHandler(this.Main_Load);
             this.mainMenu.ResumeLayout(false);
             this.mainMenu.PerformLayout();
             this.clientsSubMenu.ResumeLayout(false);
             this.moviesSubMenu.ResumeLayout(false);
             this.rentalsSubMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMovies)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteMoviesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.inchiriereCaseteDataSet1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.clientsBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -202,5 +240,10 @@ namespace Inchirieri_de_casete_video
         private ContextMenuStrip rentalsSubMenu;
         private ToolStripMenuItem addRental;
         private ToolStripMenuItem deleteRental;
+        private BindingSource inchiriereCaseteMoviesBindingSource;
+        private InchiriereCaseteMovies inchiriereCaseteMovies;
+        private InchiriereCaseteDataSet1 inchiriereCaseteDataSet1;
+        private BindingSource clientsBindingSource;
+        private InchiriereCaseteDataSet1TableAdapters.ClientsTableAdapter clientsTableAdapter;
     }
 }

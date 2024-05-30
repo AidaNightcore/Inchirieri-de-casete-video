@@ -95,5 +95,12 @@ namespace Inchirieri_de_casete_video
         {
             rentalsList.Add(rental);
         }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+            // TODO: This line of code loads data into the 'inchiriereCaseteDataSet1.Clients' table. You can move, or remove it, as needed.
+            this.clientsTableAdapter.Fill(this.inchiriereCaseteDataSet1.Clients);
+
+        }
     }
 }

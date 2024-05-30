@@ -48,9 +48,11 @@ namespace Inchirieri_de_casete_video
             this.ageRatingDrop = new System.Windows.Forms.ComboBox();
             this.langaugesTB = new System.Windows.Forms.TextBox();
             this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.pictureDragDrop = new System.Windows.Forms.PictureBox();
             this.barPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.copiesNumeric)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumeric)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDragDrop)).BeginInit();
             this.SuspendLayout();
             // 
             // windowTitleLabel
@@ -190,7 +192,6 @@ namespace Inchirieri_de_casete_video
             // 
             // ageRatingDrop
             // 
-            
             this.ageRatingDrop.FormattingEnabled = true;
             this.ageRatingDrop.Items.AddRange(new object[] {
             Inchirieri_de_casete_video.AgeRating.G,
@@ -214,17 +215,28 @@ namespace Inchirieri_de_casete_video
             // 
             // comboBox1
             // 
-            this.comboBox1.DataSource = new Inchirieri_de_casete_video.Genre[] {
-                                    Inchirieri_de_casete_video.Genre.Horror,
-                                    Inchirieri_de_casete_video.Genre.Action,
-                                    Inchirieri_de_casete_video.Genre.Romance,
-                                    Inchirieri_de_casete_video.Genre.Psychological,
-                                    Inchirieri_de_casete_video.Genre.Kids};
+            
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            Inchirieri_de_casete_video.Genre.Horror,
+            Inchirieri_de_casete_video.Genre.Action,
+            Inchirieri_de_casete_video.Genre.Romance,
+            Inchirieri_de_casete_video.Genre.Psychological,
+            Inchirieri_de_casete_video.Genre.Kids});
             this.comboBox1.Location = new System.Drawing.Point(338, 257);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(179, 28);
             this.comboBox1.TabIndex = 23;
+            // 
+            // pictureDragDrop
+            // 
+            this.pictureDragDrop.BackColor = System.Drawing.Color.White;
+            this.pictureDragDrop.Location = new System.Drawing.Point(339, 298);
+            this.pictureDragDrop.Name = "pictureDragDrop";
+            this.pictureDragDrop.Size = new System.Drawing.Size(178, 41);
+            this.pictureDragDrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pictureDragDrop.TabIndex = 24;
+            this.pictureDragDrop.TabStop = false;
             // 
             // AddMovie
             // 
@@ -232,6 +244,7 @@ namespace Inchirieri_de_casete_video
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(20)))), ((int)(((byte)(20)))), ((int)(((byte)(20)))));
             this.ClientSize = new System.Drawing.Size(554, 430);
+            this.Controls.Add(this.pictureDragDrop);
             this.Controls.Add(this.comboBox1);
             this.Controls.Add(this.langaugesTB);
             this.Controls.Add(this.ageRatingDrop);
@@ -259,6 +272,7 @@ namespace Inchirieri_de_casete_video
             this.barPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.copiesNumeric)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.priceNumeric)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureDragDrop)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -284,5 +298,6 @@ namespace Inchirieri_de_casete_video
         private System.Windows.Forms.ComboBox ageRatingDrop;
         private System.Windows.Forms.TextBox langaugesTB;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.PictureBox pictureDragDrop;
     }
 }

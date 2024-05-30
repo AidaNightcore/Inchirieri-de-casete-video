@@ -18,7 +18,8 @@ namespace Inchirieri_de_casete_video
         {
             try
             {
-                string id = Guid.NewGuid().ToString();
+                Random random = new Random();
+                int id = random.Next();
                 string name = clientNameTB.Text;
                 string surname = clientSurnameTB.Text;
                 string phone = phoneTB.Text;

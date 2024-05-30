@@ -4,14 +4,14 @@ namespace Inchirieri_de_casete_video
 {
     public class Client
     {
-        public string Id { get; private set; }
+        public int Id { get; private set; }
         public string Name { get; private set; }
         public string Surname { get; private set; }
         public DateTime BirthdayDate { get; private set; }
         public string Phone { get; private set; }
         public string Address { get; private set; }
 
-        public Client(string id, string name, string surname, string phone, DateTime birthdayDate, string address)
+        public Client(int id, string name, string surname, string phone, DateTime birthdayDate, string address)
         {
             Id = id;
             Name = name;

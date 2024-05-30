@@ -23,29 +23,27 @@ namespace Inchirieri_de_casete_video
 
         private void PopulateClientComboBox()
         {
-            clientNameTB.Items.Clear();
             List<Client> clients = dataAccess.GetClients();
-            foreach (Client client in clients)
-            {
-                clientNameTB.Items.Add(client.Id);
-            }
+            clientNameTB.DataSource = clients;
+            clientNameTB.DisplayMember = "ClientName"; // Assuming Client class has a Name property
+            clientNameTB.ValueMember = "Id";
         }
 
         private void PopulateMovieComboBox()
         {
-            movieNameTB.Items.Clear();
             List<Movie> movies = dataAccess.GetMovies();
-            foreach (Movie movie in movies)
-            {
-                movieNameTB.Items.Add(movie.Id);
-            }
+            movieNameTB.DataSource = movies;
+            movieNameTB.DisplayMember = "MovieTitle"; // Assuming Movie class has a Title property
+            movieNameTB.ValueMember = "Id";
         }
 
         private void addRentalBtn_Click(object sender, EventArgs e)
         {
-            string clientId = clientNameTB.SelectedItem?.ToString();
-            string movieId = movieNameTB.SelectedItem?.ToString();
-
+            
+            string clientId = clientNameTB.SelectedValue?.ToString();
+            string movieId = movieNameTB.SelectedValue?.ToString();
+            int parsedClientId = int.Parse(clientId);
+            int parsedMovieId = int.Parse(movieId);
             if (string.IsNullOrEmpty(clientId) || string.IsNullOrEmpty(movieId))
             {
                 MessageBox.Show("Please select a client and a movie.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -54,8 +52,8 @@ namespace Inchirieri_de_casete_video
 
             List<Client> clients = dataAccess.GetClients();
             List<Movie> movies = dataAccess.GetMovies();
-            Client selectedClient = clients.Find(c => c.Id == clientId);
-            Movie selectedMovie = movies.Find(m => m.Id == movieId);
+            Client selectedClient = clients.Find(c => c.Id.ToString() == clientId.ToString());
+            Movie selectedMovie = movies.Find(m => m.Id.ToString() == movieId.ToString());
             DateTime rentalDate = DateTime.Now;
             DateTime dueDate = returnDatePicker.Value;
 
@@ -63,22 +61,23 @@ namespace Inchirieri_de_casete_video
 
             decimal totalPrice = CalculateTotalPrice(daysRented, selectedMovie);
 
-            // Update labels
+            Random random = new Random();
+            int id = random.Next();
             priceDayLabel.Text = selectedMovie.Price.ToString();
             copiesLeftLBL.Text = selectedMovie.Copies.ToString();
             priceTotalLBL.Text = totalPrice.ToString();
             daysRentedlabelShow.Text = daysRented.ToString();
 
-            Rental newRental = new Rental(Guid.NewGuid().ToString(), clientId, movieId, totalPrice, rentalDate, dueDate);
+            Rental newRental = new Rental(id, parsedClientId, parsedMovieId, totalPrice, rentalDate, dueDate);
 
-            if (newRental.CanRent(selectedClient, selectedMovie))
+            if (!newRental.CanRent(selectedClient, selectedMovie))
             {
-                rentals.Add(newRental);
-                MessageBox.Show("Rental added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Cannot rent the selected movie for the selected client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             else
             {
-                MessageBox.Show("Cannot rent the selected movie for the selected client.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                rentals.Add(newRental);
+                MessageBox.Show("Rental added successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
 
             this.Close();
@@ -98,6 +97,41 @@ namespace Inchirieri_de_casete_video
         {
             this.clientsTableAdapter.Fill(this.inchiriereCaseteDataSet.Clients);
             this.moviesTableAdapter.Fill(this.inchiriereCaseteMovies.Movies);
+        }
+
+        public AddRental()
+        {
+            InitializeComponent();
+            this.KeyPreview = true;
+            this.KeyDown += new KeyEventHandler(AddRental_KeyDown);
+        }
+
+        // KeyDown event handler
+        private void AddRental_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Control && e.KeyCode == Keys.P)
+            {
+                PrintRentalDetails();
+                e.SuppressKeyPress = true; // Suppress the default behavior of Ctrl+P
+            }
+        }
+
+        // Method to print the rental details
+        private void PrintRentalDetails()
+        {
+            string movieName = movieNameTB.Text;
+            string clientName = clientNameTB.Text;
+            DateTime dueDate = returnDatePicker.Value;
+            string totalPrice = priceTotalLBL.Text;
+            string daysRented = daysRentedlabelShow.Text;
+
+            string details = $"Movie Name: {movieName}\n" +
+                             $"Client Name: {clientName}\n" +
+                             $"Due Date: {dueDate.ToShortDateString()}\n" +
+                             $"Total Price: {totalPrice}\n" +
+                             $"Days Rented: {daysRented}";
+
+            MessageBox.Show(details, "Rental Details", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }

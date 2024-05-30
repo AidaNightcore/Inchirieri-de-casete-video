@@ -83,7 +83,7 @@ namespace Inchirieri_de_casete_video
                         while (reader.Read())
                         {
                             clients.Add(new Client(
-                                reader["ID"].ToString(),
+                                 Convert.ToInt32(reader["ID"]),
                                 reader["FirstName"].ToString(),
                                 reader["Surname"].ToString(),
                                 reader["Phone"].ToString(),
@@ -130,7 +130,7 @@ namespace Inchirieri_de_casete_video
                         while (reader.Read())
                         {
                             Movie movie = new Movie(
-                                reader["ID"].ToString(),
+                                Convert.ToInt32(reader["ID"]),
                                 reader["MovieName"].ToString(),
                                 Convert.ToDecimal(reader["Price"]),
                                 (AgeRating)Enum.Parse(typeof(AgeRating), reader["AgeRating"].ToString()),
@@ -138,7 +138,8 @@ namespace Inchirieri_de_casete_video
                                 Convert.ToDateTime(reader["PublishDate"]),
                                 Convert.ToInt32(reader["Copies"]),
                                 (Genre)Genre.Parse(typeof(Genre), reader["Genre"].ToString()),
-                                reader["Languages"].ToString().Split(',')
+                                reader["Languages"].ToString().Split(','),
+                                reader["ImageData"].ToString()
                             );
                             movies.Add(movie);
                         }
@@ -151,19 +152,20 @@ namespace Inchirieri_de_casete_video
 
         public void AddMovie(Movie movie)
         {
-            string query = "INSERT INTO Movies (ID, MovieName, Price, AgeRating, Rating, PublishDate, Copies, Genre, Languages) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+            string query = "INSERT INTO Movies (ID, MovieName, Price, AgeRating, Rating, PublishDate, Copies, Genre, Languages, ImageData) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             List<OleDbParameter> parameters = new List<OleDbParameter>
-            {
-                new OleDbParameter("ID", movie.Id),
-                new OleDbParameter("MovieName", movie.Name),
-                new OleDbParameter("Price", movie.Price),
-                new OleDbParameter("AgeRating", movie.AgeRating.ToString()),
-                new OleDbParameter("Rating", movie.Rating),
-                new OleDbParameter("PublishDate", movie.PublishDate),
-                new OleDbParameter("Copies", movie.Copies),
-                new OleDbParameter("Genre", movie.Genre.ToString()),
-                new OleDbParameter("Languages", string.Join(",", movie.Languages))
-            };
+        {
+            new OleDbParameter("ID", movie.Id),
+            new OleDbParameter("MovieName", movie.Name),
+            new OleDbParameter("Price", movie.Price),
+            new OleDbParameter("AgeRating", movie.AgeRating.ToString()),
+            new OleDbParameter("Rating", movie.Rating),
+            new OleDbParameter("PublishDate", movie.PublishDate),
+            new OleDbParameter("Copies", movie.Copies),
+            new OleDbParameter("Genre", movie.Genre.ToString()),
+            new OleDbParameter("Languages", string.Join(",", movie.Languages)),
+            new OleDbParameter("ImageData", movie.ImageData) 
+        };
 
             ExecuteNonQuery(query, parameters);
         }
@@ -175,8 +177,6 @@ namespace Inchirieri_de_casete_video
 
             using (OleDbConnection connection = new OleDbConnection(connectionString))
             {
-
-
                 connection.Open();
 
                 using (OleDbCommand command = new OleDbCommand(query, connection))
@@ -185,21 +185,30 @@ namespace Inchirieri_de_casete_video
                     {
                         while (reader.Read())
                         {
+                            int id = Convert.ToInt32(reader["ID"]);
+                            int clientId = Convert.ToInt32(reader["ClientId"]);
+                            int movieId = Convert.ToInt32(reader["MovieId"]);
+                            decimal totalPrice = Convert.ToDecimal(reader["TotalPrice"]);
+                            DateTime rentDate = Convert.ToDateTime(reader["RentDate"]);
+                            DateTime dueDate = Convert.ToDateTime(reader["DueDate"]);
+
                             rentals.Add(new Rental(
-                                reader["ID"].ToString(),
-                                reader["ClientId"].ToString(),
-                                reader["MovieId"].ToString(),
-                                Convert.ToDecimal(reader["TotalPrice"]),
-                                Convert.ToDateTime(reader["RentDate"]),
-                                Convert.ToDateTime(reader["DueDate"])
+                                id,
+                                clientId,
+                                movieId,
+                                totalPrice,
+                                rentDate,
+                                dueDate
                             ));
                         }
+
                     }
                 }
             }
 
             return rentals;
         }
+
 
         public void AddRental(Rental rental)
         {

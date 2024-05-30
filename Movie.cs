@@ -21,7 +21,7 @@ namespace Inchirieri_de_casete_video
 
     public class Movie
     {
-        private string id;
+        private int id;
         private string name;
         private DateTime publishDate;
         private int rating;
@@ -30,8 +30,10 @@ namespace Inchirieri_de_casete_video
         private int copies;
         private Genre genre;
         private string[] languages;
+        private string imageData;
+        public string ImageData { get => imageData; set=> imageData=value; }
 
-        public string Id { get => id; set => id = value; }
+        public int Id { get => id; set => id = value; }
         public string Name { get => name; set => name = value; }
         public DateTime PublishDate { get => publishDate; set => publishDate = value; }
         public int Rating { get => rating; set => rating = value; }
@@ -41,7 +43,7 @@ namespace Inchirieri_de_casete_video
         public Genre Genre { get => genre; set => genre = value; }
         public string[] Languages { get => languages; set => languages = value; }
 
-        public Movie(string v_id, string v_name, decimal v_price, AgeRating v_ageRating, int v_rating, DateTime v_publishDate, int v_copies, Genre v_genre, string[] v_languages)
+        public Movie(int v_id, string v_name, decimal v_price, AgeRating v_ageRating, int v_rating, DateTime v_publishDate, int v_copies, Genre v_genre, string[] v_languages, string v_imageData)
         {
             id = v_id;
             name = v_name;
@@ -52,6 +54,7 @@ namespace Inchirieri_de_casete_video
             price = v_price;
             genre = v_genre;
             languages = (string[])v_languages.Clone();
+            imageData= v_imageData;
         }
 
 

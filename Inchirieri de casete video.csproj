@@ -90,6 +90,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>InchiriereCaseteDataSet.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InchiriereCaseteDataSet1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>InchiriereCaseteDataSet1.xsd</DependentUpon>
+    </Compile>
     <Compile Include="InchiriereCaseteMovies.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -137,6 +142,17 @@
     </None>
     <None Include="InchiriereCaseteDataSet.xss">
       <DependentUpon>InchiriereCaseteDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="InchiriereCaseteDataSet1.xsc">
+      <DependentUpon>InchiriereCaseteDataSet1.xsd</DependentUpon>
+    </None>
+    <None Include="InchiriereCaseteDataSet1.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>InchiriereCaseteDataSet1.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="InchiriereCaseteDataSet1.xss">
+      <DependentUpon>InchiriereCaseteDataSet1.xsd</DependentUpon>
     </None>
     <None Include="InchiriereCaseteMovies.xsc">
       <DependentUpon>InchiriereCaseteMovies.xsd</DependentUpon>
